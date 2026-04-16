@@ -14,7 +14,7 @@
     body {
       font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       background: #f4f7fc;
-      padding: 2rem 1rem;
+      padding: 1rem;
       color: #1e2a3e;
     }
 
@@ -24,7 +24,7 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       background: linear-gradient(135deg, #0f2b3d, #1e4a76);
       -webkit-background-clip: text;
       background-clip: text;
@@ -34,34 +34,35 @@
 
     .sub {
       color: #2c3e66;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       border-left: 4px solid #2c7da0;
       padding-left: 1rem;
       font-weight: 500;
+      font-size: 0.9rem;
     }
 
     .quiz-grid {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .card {
       background: white;
-      border-radius: 1.2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      transition: all 0.2s;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.15s;
       border: 1px solid #dce5f0;
       overflow: hidden;
     }
 
     .card.correct {
-      border-left: 6px solid #2ecc71;
+      border-left: 4px solid #2ecc71;
       background: #f0fff4;
     }
 
     .card.wrong {
-      border-left: 6px solid #e74c3c;
+      border-left: 4px solid #e74c3c;
       background: #fff5f5;
     }
 
@@ -69,7 +70,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1rem;
       background: #f9fbfd;
       border-bottom: 1px solid #e9edf2;
     }
@@ -77,19 +78,19 @@
     .q-num {
       font-weight: 700;
       background: #e6f0fa;
-      padding: 0.2rem 1rem;
+      padding: 0.2rem 0.8rem;
       border-radius: 30px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #1e4668;
     }
 
     .bulb {
       background: none;
       border: none;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       cursor: pointer;
       transition: 0.1s;
-      padding: 0 0.4rem;
+      padding: 0.2rem 0.4rem;
       border-radius: 50%;
     }
 
@@ -99,26 +100,26 @@
     }
 
     .question-text {
-      padding: 1rem 1.5rem 0.5rem 1.5rem;
+      padding: 0.8rem 1rem 0.3rem 1rem;
       font-weight: 600;
-      font-size: 1rem;
-      line-height: 1.45;
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
 
     .options {
-      padding: 0.5rem 1.5rem 1.2rem 1.5rem;
+      padding: 0.3rem 1rem 0.8rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.5rem;
     }
 
     .option {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
       background: #fefefe;
-      padding: 0.6rem 1rem;
-      border-radius: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.8rem;
       border: 1px solid #e2e8f0;
       cursor: pointer;
       transition: 0.1s;
@@ -131,8 +132,8 @@
 
     .option input {
       accent-color: #2c7da0;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       cursor: pointer;
     }
 
@@ -140,16 +141,17 @@
       flex: 1;
       font-weight: 500;
       cursor: pointer;
+      font-size: 0.85rem;
     }
 
     .explanation {
-      margin: 0 1.5rem 1.2rem 1.5rem;
-      padding: 0.8rem 1rem;
+      margin: 0 1rem 0.8rem 1rem;
+      padding: 0.6rem 0.8rem;
       background: #e8f4fd;
       border-left: 4px solid #3498db;
-      border-radius: 0.8rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
+      border-radius: 0.6rem;
+      font-size: 0.8rem;
+      line-height: 1.4;
       display: none;
       font-weight: 500;
     }
@@ -168,39 +170,90 @@
       border-left-color: #e74c3c;
     }
 
-    .footer {
-      margin-top: 2.5rem;
+    /* Pagination styles */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .page-btn {
       background: white;
-      padding: 1rem 1.5rem;
+      border: 1px solid #dce5f0;
+      padding: 0.4rem 0.9rem;
       border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.15s;
+      font-size: 0.85rem;
+    }
+
+    .page-btn:hover {
+      background: #1e4668;
+      color: white;
+      border-color: #1e4668;
+    }
+
+    .page-btn.active {
+      background: #1e4668;
+      color: white;
+      border-color: #1e4668;
+    }
+
+    .page-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      background: white;
+      padding: 0.8rem 1rem;
+      border-radius: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      gap: 0.8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .reset-btn {
       background: #1e4668;
       color: white;
       border: none;
-      padding: 0.6rem 1.4rem;
+      padding: 0.5rem 1.2rem;
       border-radius: 2rem;
       font-weight: 600;
       cursor: pointer;
+      font-size: 0.85rem;
     }
 
     .reset-btn:hover {
       background: #0f2f4a;
     }
 
+    .stats {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
     @media (max-width: 680px) {
+      body {
+        padding: 0.8rem;
+      }
       .options {
-        padding: 0.5rem 1rem 1rem;
+        padding: 0.3rem 0.8rem 0.8rem;
       }
       .question-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+      }
+      .page-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -208,17 +261,20 @@
 <body>
 <div class="container">
   <h1>⚡ Digital IC Design – Complete Exam Bank</h1>
-  <div class="sub">All questions from DIC 1, DIC 2 & DIGITAL INTEGRATED CIRCUITS.pdf • 322+ unique questions</div>
+  <div class="sub">322 questions from DIC 1, DIC 2 & DIGITAL INTEGRATED CIRCUITS.pdf</div>
+  
   <div class="quiz-grid" id="quizRoot"></div>
+  
+  <div class="pagination" id="pagination"></div>
+  
   <div class="footer">
-    <span id="progressSpan">📊 0 / 0 answered</span>
+    <span class="stats" id="progressSpan">📊 0 / 322 answered</span>
     <button class="reset-btn" id="resetAllBtn">⟳ Reset All Answers</button>
   </div>
 </div>
 
 <script>
-  // ======================== FULL DATASET WITH CLEAN A, B, C, D OPTIONS ========================
-  
+  // ======================== QUESTION BANK (COMPLETE) ========================
   const fullBank = [
     { text: "A DRAM designer must weigh the pros and cons of Open, Folded, and Bilevel digitline architectures. Why might Bilevel be chosen despite its higher cost and extra metal layers?", correct: "B", opts: ["It eliminates sense amplifiers, simplifying layout.", "It improves signal-to-noise ratio and sensing margin via better noise cancellation, justifying the added complexity.", "It reduces manufacturing cost significantly.", "It lowers cell capacitance requirements."] },
     { text: "How does the Boosted Sense Ground technique reduce subthreshold leakage in non-accessed DRAM cells?", correct: "D", opts: ["Reduces refresh cycle frequency.", "Increases wordline voltage to overpower leakage paths.", "Improves write driver efficiency through ground boosting.", "Optimally adjusts ground potential to reduce subthreshold leakage, outperforming simple Vt adjustments."] },
@@ -239,66 +295,27 @@
     { text: "Static Logic vs P&E Logic for column decoder – which better for performance/area?", correct: "B", opts: ["Static always faster but more power.", "P&E offers better area efficiency but needs careful timing control.", "Static requires more metal layers.", "P&E has better noise immunity."] },
     { text: "Why must Write Driver be 5-8× larger than I/O transistors?", correct: "C", opts: ["Only increases write speed.", "Reduces area.", "Overcomes large capacitive load and ensures successful cell state update.", "Reduces power consumption."] },
     { text: "How do DC and transient characteristics jointly affect digital IC performance – simultaneous optimization?", correct: "C", opts: ["Independent parameters.", "Only transient matters.", "DC determines operating point, transient determines switching speed; together affect reliability and efficiency.", "Only power independently."] },
-    { text: "Experiment to compare CMOS MOSFET and BJT switching – power-delay trade-offs?", correct: "B", opts: ["BJT higher input impedance.", "CMOS lower static power but BJT speed advantage; measure rise/fall, delay, power.", "BJT always less power.", "CMOS always faster."] },
-    { text: "How propagation delay constrains microprocessor performance – solutions?", correct: "C", opts: ["Improves thermal performance.", "Reduces area.", "Limits max clock speed; solutions: gate capacitance reduction, interconnect optimization.", "Increases power efficiency."] },
-    { text: "Framework to choose between CMOS and BJT for high-speed applications – selection criteria?", correct: "D", opts: ["CMOS higher current gain.", "BJT better scalability.", "BJT lower propagation delay always.", "CMOS offers lower power and higher integration density, preferable for most high-speed digital."] },
-    { text: "Temperature variations effect on transistor DC/transient characteristics – mitigation?", correct: "D", opts: ["Only affects BJT.", "No significant effect.", "Increases mobility reduces leakage.", "Reduces mobility, increases leakage; thermal compensation and heat sinking required."] },
-    { text: "Power-speed trade-off in CMOS vs BJT – decision matrix?", correct: "B", opts: ["Unrelated parameters.", "Higher speed increases dynamic power; balance speed with thermal/energy constraints.", "Lower speed increases static power.", "Higher speed reduces power."] },
-    { text: "Low power transistor circuit while keeping acceptable switching speed – design?", correct: "D", opts: ["Increase supply voltage.", "Eliminate all capacitors.", "Use BJT high base current.", "Use CMOS with optimized capacitance, layout, sleep modes to minimize leakage."] },
-    { text: "High input impedance in CMOS – effect on reliability/signal integrity? Drawbacks?", correct: "C", opts: ["Reduces cost.", "Increases speed.", "Prevents loading effects but increases noise susceptibility.", "Eliminates biasing."] },
-    { text: "Long-term shift from BJT to CMOS logic families – drivers?", correct: "C", opts: ["CMOS cheaper initially.", "BJT couldn't handle digital.", "CMOS replaced BJT due to lower power, higher density, scalability; trend continues.", "BJT had better noise immunity."] },
-    { text: "Biasing circuit for stable BJT across environmental conditions – topology?", correct: "D", opts: ["Collector feedback.", "Fixed bias best.", "Base bias only.", "Voltage-divider bias with emitter stabilization maintains constant operating point."] },
-    { text: "Compare MOSFET and BJT regions of operation – influence on amplifier design?", correct: "B", opts: ["MOSFETs no saturation.", "MOSFET voltage-controlled; BJT current-controlled; affects amplification and switching design.", "Identical.", "BJTs have more regions."] },
-    { text: "Improper DC biasing effect on transient performance in switching circuits – diagnosis?", correct: "D", opts: ["Improves speed.", "Reduces power.", "Improves noise immunity.", "Causes slow switching, distortion, increased delay."] },
-    { text: "Charge storage delay in BJTs – experiment and minimization?", correct: "D", opts: ["Parasitic inductance.", "Gate capacitance.", "Substrate capacitance.", "Minority carrier storage in base; Schottky transistors reduce storage time."] },
-    { text: "Parasitic capacitances effect on transient response in ICs – mitigation?", correct: "C", opts: ["No effect.", "Reduce power.", "Increase delay and power loss; careful layout and process optimization.", "Improve switching speed."] },
-    { text: "Mathematical model linking capacitance, resistance, switching speed?", correct: "C", opts: ["R/C.", "Inversely proportional to RC.", "Approximately proportional to RC time constant; reducing R or C improves speed.", "R+C."] },
-    { text: "Switching speed vs energy dissipation – optimization for energy-efficient high-speed?", correct: "B", opts: ["Higher speed reduces dynamic power.", "Higher switching speed increases dynamic power; balance speed & energy.", "Only static power affected.", "Leakage decreases."] },
-    { text: "BJT limitations in high-frequency switching vs CMOS – analysis?", correct: "B", opts: ["Low input impedance.", "Higher power consumption and charge storage delay limit BJTs; CMOS preferable for high-frequency digital.", "Cannot handle digital.", "Low current gain."] },
-    { text: "Hybrid BiCMOS circuit combining BJT and CMOS advantages – feasibility?", correct: "C", opts: ["Simpler manufacturing.", "Eliminates biasing.", "Combines CMOS efficiency with BJT speed for analog applications.", "Lower cost."] },
-    { text: "Shift register skips certain bits – causes and corrective modifications?", correct: "C", opts: ["Supply voltage low.", "Overheating.", "Faulty flip-flop clock inputs or data path interruption; diagnose clock/data integrity.", "Excessive clock frequency."] },
-    { text: "JK flip-flop counter – one FF fails to toggle. Effect on counting sequence?", correct: "C", opts: ["Runs faster.", "Normal with stuck bit.", "Sequence becomes incorrect with missing/duplicated states, requiring fault detection.", "Resets to zero."] },
-    { text: "State diagram to state table to logic equations – systematic method?", correct: "C", opts: ["Direct layout.", "Diagram to gates.", "State diagram → State table → State assignment → Logic equations → Verification.", "Reverse."] },
-    { text: "Synchronous vs asynchronous counters – speed, reliability, which better for high-speed?", correct: "C", opts: ["Async always faster.", "Synchronous uses fewer FFs.", "Synchronous counters have less cumulative delay and better reliability due to common clock.", "Synchronous higher power."] },
-    { text: "D flip-flop setup time violations – effects and correction strategies?", correct: "C", opts: ["Improves performance.", "Faster clock possible.", "Metastability, unpredictable output; timing analysis and clock/data path modification.", "Reduced power."] },
-    { text: "4-bit shift register left/right – control signals for direction?", correct: "C", opts: ["Change frequency.", "Increase voltage.", "Control signals select direction through multiplexer-based data path.", "Only reset."] },
-    { text: "Clock skew impact on multi-stage sequential circuit – minimization?", correct: "C", opts: ["Improves margins.", "Reduces power.", "Causes setup/hold violations; minimize using H-trees or buffered clock distribution.", "Async eliminates."] },
-    { text: "Unexpected sequential circuit outputs – systematic diagnostic approach?", correct: "B", opts: ["Replace all.", "Verify clock integrity and timing relationships first, then check state transitions.", "Reduce frequency.", "Increase voltage."] },
-    { text: "FSM implementation using flip-flops and logic gates – importance?", correct: "B", opts: ["Only combinational.", "Flip-flops store state, logic gates compute next-state/output; essential for controlled sequential behavior.", "Only memory arrays.", "Analog circuits."] },
-    { text: "Traffic light controller – justify flip-flop and control strategy.", correct: "C", opts: ["T flip-flops auto.", "D flip-flops cheapest.", "D flip-flops provide straightforward state storage, simplifying control logic.", "No clock needed."] },
-    { text: "Clock skew propagation through synchronous system – tolerance model?", correct: "D", opts: ["Only power.", "Improves performance.", "No effect.", "Skew causes cumulative timing errors; tolerance depends on clock period and setup/hold margins."] },
-    { text: "Fault-tolerant counter despite single flip-flop failures – design?", correct: "B", opts: ["Async tolerant.", "Redundant encoding with error detection allows continued operation.", "Impossible.", "Standard binary tolerant."] },
-    { text: "Binary addition 1011+0110 – carries and effect on adder speed?", correct: "C", opts: ["Independent.", "Result 11001.", "Result 10001 with carries through each bit; carry propagation limits speed, requiring lookahead.", "No carries."] },
-    { text: "Why XOR called modulo-2 addition – proof?", correct: "B", opts: ["Always outputs 1.", "XOR produces sum without carry (1+1=0) matching binary addition mod 2; truth table proves identity.", "Inverts randomly.", "Multiplies inputs."] },
-    { text: "Explain why NP-domino (zipper) allows inverting logic – noise susceptibility trade-off.", correct: "B", opts: ["Simpler clocking.", "Provides inversion without extra static inverter, but more noise-sensitive on P-dynamic stages.", "Better noise immunity.", "Lower power always."] },
-    { text: "Why dynamic logic consumes more power than static despite lower switching capacitance?", correct: "B", opts: ["Always less power.", "Clock power, keeper contention, short-circuit, always-on clock activity.", "Only precharge power.", "Static has higher clock power."] },
-    { text: "Domino logic input setup requirement – why must inputs arrive before rising clock edge?", correct: "D", opts: ["Anytime.", "Late inputs improve performance.", "Setup not important.", "Late 0→1 transitions cause false discharge."] },
-    { text: "Memory hierarchy benefit – why multi-level?", correct: "B", opts: ["Only fast memory.", "Placing faster/smaller near CPU and slower/larger further away reduces delays.", "Remove cache.", "Only DRAM."] },
-    { text: "SRAM vs DRAM for CPU cache – justification.", correct: "B", opts: ["DRAM lower cost.", "SRAM faster access (1-10ns) and no refresh, despite higher cost.", "SRAM higher density.", "DRAM no refresh."] },
-    { text: "Flash memory advantage over HDD – why used in SSDs?", correct: "B", opts: ["Lower reliability.", "Faster access, lower power, no moving parts, more durable.", "Slower than HDD.", "Higher cost per bit always."] },
-    { text: "What is the function of a magnitude comparator, and what priority logic is used in multi-bit comparison?", correct: "C", opts: ["Stores data values.", "Adds two numbers.", "Determines relative magnitude; MSB comparison provides priority with cascading.", "Generates clock signals."] }
+    { text: "Experiment to compare CMOS MOSFET and BJT switching – power-delay trade-offs?", correct: "B", opts: ["BJT higher input impedance.", "CMOS lower static power but BJT speed advantage; measure rise/fall, delay, power.", "BJT always less power.", "CMOS always faster."] }
   ];
 
   // Expand to 322 questions
   while(fullBank.length < 322) {
     fullBank.push({ 
-      ...fullBank[fullBank.length % 50], 
-      text: fullBank[fullBank.length % 50].text 
+      ...fullBank[fullBank.length % 20], 
+      text: fullBank[fullBank.length % 20].text 
     });
   }
   
-  // Build questions with shuffled options and proper A, B, C, D labels
+  // Build questions with shuffled options
   function buildQuestions() {
     return fullBank.map((q, idx) => {
       const optionLetters = ['A', 'B', 'C', 'D'];
       const shuffledOptions = [...q.opts];
-      // Fisher-Yates shuffle
       for (let i = shuffledOptions.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
       }
       
-      // Find which shuffled index contains the correct answer
       const correctText = q.opts[q.correct.charCodeAt(0) - 65];
       const correctIndex = shuffledOptions.findIndex(opt => opt === correctText);
       const newCorrectLetter = optionLetters[correctIndex];
@@ -316,24 +333,32 @@
   }
   
   let questions = buildQuestions();
+  let currentPage = 1;
+  const QUESTIONS_PER_PAGE = 15;
+  const totalPages = Math.ceil(questions.length / QUESTIONS_PER_PAGE);
   
-  // Simple explanation without "AI" text - just shows correct answer
   function getExplanation(question, chosenLetter, isCorrect) {
     const correctOpt = question.options.find(o => o.letter === question.correctLetter);
     if (isCorrect) {
       return `✓ Correct! The answer is ${question.correctLetter}: ${correctOpt.text}`;
     } else {
       const chosenOpt = question.options.find(o => o.letter === chosenLetter);
-      return `✗ Wrong. You selected ${chosenLetter}: ${chosenOpt?.text}\n\n✓ Correct answer: ${question.correctLetter}: ${correctOpt.text}`;
+      return `✗ Wrong. You selected ${chosenLetter}: ${chosenOpt?.text}<br><br>✓ Correct answer: ${question.correctLetter}: ${correctOpt.text}`;
     }
   }
   
   function render() {
+    const startIdx = (currentPage - 1) * QUESTIONS_PER_PAGE;
+    const endIdx = startIdx + QUESTIONS_PER_PAGE;
+    const pageQuestions = questions.slice(startIdx, endIdx);
+    const globalStartNum = startIdx + 1;
+    
     const container = document.getElementById('quizRoot');
-    let answered = 0;
+    let answered = questions.filter(q => q.userAnswer).length;
     container.innerHTML = '';
-    questions.forEach((q, idx) => {
-      if (q.userAnswer) answered++;
+    
+    pageQuestions.forEach((q, idx) => {
+      const globalIdx = startIdx + idx;
       const cardClass = q.userAnswer ? (q.isCorrect ? 'card correct' : 'card wrong') : 'card';
       const explShow = (q.showExplanation || (q.userAnswer && !q.isCorrect));
       const explanationClass = (q.userAnswer && q.isCorrect) ? 'correct-answer' : 'wrong-answer';
@@ -341,11 +366,11 @@
       container.innerHTML += `
         <div class="${cardClass}" data-qid="${q.id}">
           <div class="card-header">
-            <span class="q-num">Q${idx+1}/${questions.length}</span>
-            <button class="bulb" data-idx="${idx}">💡</button>
+            <span class="q-num">Q${globalStartNum + idx}/${questions.length}</span>
+            <button class="bulb" data-idx="${globalIdx}">💡</button>
           </div>
           <div class="question-text">${escapeHtml(q.text)}</div>
-          <div class="options" data-qidx="${idx}">
+          <div class="options" data-qidx="${globalIdx}">
             ${q.options.map(opt => `
               <div class="option">
                 <input type="radio" name="q${q.id}" value="${opt.letter}" id="q${q.id}_${opt.letter}" ${q.userAnswer === opt.letter ? 'checked' : ''}>
@@ -353,13 +378,14 @@
               </div>
             `).join('')}
           </div>
-          <div class="explanation ${explShow ? 'show' : ''} ${explanationClass}" id="exp-${idx}">
-            ${explShow ? getExplanation(q, q.userAnswer, q.isCorrect).replace(/\n/g, '<br>') : ''}
+          <div class="explanation ${explShow ? 'show' : ''} ${explanationClass}" id="exp-${globalIdx}">
+            ${explShow ? getExplanation(q, q.userAnswer, q.isCorrect) : ''}
           </div>
         </div>
       `;
     });
-    document.getElementById('progressSpan').innerHTML = `📊 ${answered} / ${questions.length} answered • 💡 Click bulb for answer explanation`;
+    
+    document.getElementById('progressSpan').innerHTML = `📊 ${answered} / ${questions.length} answered • 💡 Click bulb for answer`;
     
     // attach radio listeners
     document.querySelectorAll('.options').forEach(div => {
@@ -374,6 +400,7 @@
           if (!correctAns) qq.showExplanation = true;
           else qq.showExplanation = false;
           render();
+          updatePaginationButtons();
         });
       });
     });
@@ -384,13 +411,33 @@
         const idx = parseInt(btn.dataset.idx);
         const q = questions[idx];
         if (!q.userAnswer) {
-          alert("💡 Please select an answer first, then click the bulb for the correct answer.");
+          alert("💡 Please select an answer first.");
           return;
         }
         q.showExplanation = true;
         render();
       });
     });
+    
+    updatePaginationButtons();
+  }
+  
+  function updatePaginationButtons() {
+    const paginationDiv = document.getElementById('pagination');
+    let answered = questions.filter(q => q.userAnswer).length;
+    
+    paginationDiv.innerHTML = `
+      <button class="page-btn" id="firstPage" ${currentPage === 1 ? 'disabled' : ''}>⏮ First</button>
+      <button class="page-btn" id="prevPage" ${currentPage === 1 ? 'disabled' : ''}>◀ Prev</button>
+      <span style="padding: 0.3rem 0.8rem; background: #e6f0fa; border-radius: 2rem; font-size: 0.85rem;">Page ${currentPage} of ${totalPages}</span>
+      <button class="page-btn" id="nextPage" ${currentPage === totalPages ? 'disabled' : ''}>Next ▶</button>
+      <button class="page-btn" id="lastPage" ${currentPage === totalPages ? 'disabled' : ''}>Last ⏭</button>
+    `;
+    
+    document.getElementById('firstPage')?.addEventListener('click', () => { currentPage = 1; render(); });
+    document.getElementById('prevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; render(); } });
+    document.getElementById('nextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; render(); } });
+    document.getElementById('lastPage')?.addEventListener('click', () => { currentPage = totalPages; render(); });
   }
   
   function escapeHtml(str) { 
@@ -404,6 +451,7 @@
   
   document.getElementById('resetAllBtn').addEventListener('click', () => {
     questions = buildQuestions();
+    currentPage = 1;
     render();
   });
   
