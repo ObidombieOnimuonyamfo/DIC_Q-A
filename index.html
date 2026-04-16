@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✨ DIC Design Mastery – 322 Questions with AI Tutor</title>
+  <title>⚡ DIC Design Mastery – 322 Questions with AI Tutor</title>
   <style>
     * {
       margin: 0;
@@ -57,7 +57,7 @@
       50% { opacity: 1; }
     }
 
-    /* Floating chip icons */
+    /* Floating Microprocessor/Die Icons */
     .chip-bg {
       position: fixed;
       font-size: 60px;
@@ -93,7 +93,7 @@
     }
 
     .hero::before {
-      content: "⚡";
+      content: "💻";
       position: absolute;
       top: -20px;
       right: -20px;
@@ -290,17 +290,6 @@
       font-size: 0.75rem;
       font-weight: 700;
       font-family: monospace;
-    }
-
-    .locked-badge {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffaa00;
-      padding: 4px 10px;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      margin-left: 10px;
-      border: 1px solid #ffaa00;
     }
 
     .bulb {
@@ -501,24 +490,24 @@
   </style>
 </head>
 <body>
-  <!-- Floating DIC / Chip Icons Background -->
-  <div class="chip-bg" style="left: 5%; animation-duration: 25s;">🔲</div>
+  <!-- Floating Microprocessor/Die/Silicon Chip Icons -->
+  <div class="chip-bg" style="left: 5%; animation-duration: 25s;">💻</div>
   <div class="chip-bg" style="left: 15%; animation-duration: 30s; animation-delay: -5s;">⚡</div>
-  <div class="chip-bg" style="left: 25%; animation-duration: 22s;">💾</div>
+  <div class="chip-bg" style="left: 25%; animation-duration: 22s;">🔲</div>
   <div class="chip-bg" style="left: 35%; animation-duration: 28s;">🔌</div>
-  <div class="chip-bg" style="left: 45%; animation-duration: 35s;">🖥️</div>
+  <div class="chip-bg" style="left: 45%; animation-duration: 35s;">💻</div>
   <div class="chip-bg" style="left: 55%; animation-duration: 26s;">🔬</div>
   <div class="chip-bg" style="left: 65%; animation-duration: 32s;">📟</div>
   <div class="chip-bg" style="left: 75%; animation-duration: 24s;">⚙️</div>
-  <div class="chip-bg" style="left: 85%; animation-duration: 29s;">🔧</div>
+  <div class="chip-bg" style="left: 85%; animation-duration: 29s;">💻</div>
   <div class="chip-bg" style="left: 95%; animation-duration: 31s;">💡</div>
 
 <div class="container">
   <div class="hero">
     <h1>
-      <span>🔬</span> DIGITAL IC DESIGN MASTERY
+      <span>💻</span> DIGITAL IC DESIGN MASTERY
     </h1>
-    <div class="sub">322 expert-level questions • DIC Engineering Focus • AI Explanations</div>
+    <div class="sub">322 expert-level questions • DIC Engineering Focus • AI Explanations • Locked after selection</div>
   </div>
 
   <div class="stats-dashboard">
@@ -606,7 +595,7 @@
     if (q.isCorrect) {
       return `
         <div class="explanation-header">
-          <span class="explanation-icon">🎉</span>
+          <span class="explanation-icon">💻</span>
           <span class="explanation-title">VERIFICATION SUCCESSFUL</span>
         </div>
         <div class="answer-breakdown">
@@ -620,7 +609,7 @@
       const chosenOpt = q.options.find(o => o.letter === q.userAnswer);
       return `
         <div class="explanation-header">
-          <span class="explanation-icon">🔬</span>
+          <span class="explanation-icon">💻</span>
           <span class="explanation-title">DIC ANALYSIS: SIGNAL MISMATCH</span>
         </div>
         <div class="answer-breakdown">
@@ -689,10 +678,7 @@
       
       html += `<div class="${cardClass}">
         <div class="card-header">
-          <div>
-            <span class="q-badge">📟 Q${globalIdx+1}/${questions.length}</span>
-            ${q.isLocked ? '<span class="locked-badge">🔒 LOCKED</span>' : ''}
-          </div>
+          <span class="q-badge">📟 Q${globalIdx+1}/${questions.length}</span>
           <button class="bulb" data-idx="${globalIdx}">💡</button>
         </div>
         <div class="question-text">${escapeHtml(q.text)}</div>
@@ -816,10 +802,10 @@
     
     currentPage = 1;
     render();
-    alert(`🔬 RETAKE MODE: ${questions.length} questions with errors detected. Re-analyze and select correct answers.`);
+    alert(`💻 RETAKE MODE: ${questions.length} questions with errors detected. Re-analyze and select correct answers.`);
   });
 
   render();
 </script>
 </body>
-</html
+</html>
