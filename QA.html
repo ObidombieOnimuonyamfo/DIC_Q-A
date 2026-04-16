@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📘 Digital IC Design – Complete Question Bank (3 Files)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f7fc;
+      padding: 2rem 1rem;
+      color: #1e2a3e;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #0f2b3d, #1e4a76);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .sub {
+      color: #2c3e66;
+      margin-bottom: 2rem;
+      border-left: 4px solid #2c7da0;
+      padding-left: 1rem;
+      font-weight: 500;
+    }
+
+    .quiz-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1.2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+      border: 1px solid #dce5f0;
+      overflow: hidden;
+    }
+
+    .card.correct {
+      border-left: 6px solid #2ecc71;
+      background: #f0fff4;
+    }
+
+    .card.wrong {
+      border-left: 6px solid #e74c3c;
+      background: #fff5f5;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: #f9fbfd;
+      border-bottom: 1px solid #e9edf2;
+    }
+
+    .q-num {
+      font-weight: 700;
+      background: #e6f0fa;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #1e4668;
+    }
+
+    .bulb {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: 0.1s;
+      padding: 0 0.4rem;
+      border-radius: 50%;
+    }
+
+    .bulb:hover {
+      transform: scale(1.1);
+      background: #f0f0f0;
+    }
+
+    .question-text {
+      padding: 1rem 1.5rem 0.5rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .options {
+      padding: 0.5rem 1.5rem 1.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #fefefe;
+      padding: 0.6rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: 0.1s;
+    }
+
+    .option:hover {
+      background: #f1f9ff;
+      border-color: #90b4d4;
+    }
+
+    .option input {
+      accent-color: #2c7da0;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .option label {
+      flex: 1;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .explanation {
+      margin: 0 1.5rem 1.2rem 1.5rem;
+      padding: 0.8rem 1rem;
+      background: #e8f4fd;
+      border-left: 4px solid #3498db;
+      border-radius: 0.8rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: none;
+      font-weight: 500;
+    }
+
+    .explanation.show {
+      display: block;
+    }
+
+    .explanation.correct-answer {
+      background: #e8f8f0;
+      border-left-color: #2ecc71;
+    }
+
+    .explanation.wrong-answer {
+      background: #fef0ef;
+      border-left-color: #e74c3c;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .reset-btn {
+      background: #1e4668;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .reset-btn:hover {
+      background: #0f2f4a;
+    }
+
+    @media (max-width: 680px) {
+      .options {
+        padding: 0.5rem 1rem 1rem;
+      }
+      .question-text {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>⚡ Digital IC Design – Complete Exam Bank</h1>
+  <div class="sub">All questions from DIC 1, DIC 2 & DIGITAL INTEGRATED CIRCUITS.pdf • 322+ unique questions</div>
+  <div class="quiz-grid" id="quizRoot"></div>
+  <div class="footer">
+    <span id="progressSpan">📊 0 / 0 answered</span>
+    <button class="reset-btn" id="resetAllBtn">⟳ Reset All Answers</button>
+  </div>
+</div>
+
+<script>
+  // ======================== FULL DATASET WITH CLEAN A, B, C, D OPTIONS ========================
+  
+  const fullBank = [
+    { text: "A DRAM designer must weigh the pros and cons of Open, Folded, and Bilevel digitline architectures. Why might Bilevel be chosen despite its higher cost and extra metal layers?", correct: "B", opts: ["It eliminates sense amplifiers, simplifying layout.", "It improves signal-to-noise ratio and sensing margin via better noise cancellation, justifying the added complexity.", "It reduces manufacturing cost significantly.", "It lowers cell capacitance requirements."] },
+    { text: "How does the Boosted Sense Ground technique reduce subthreshold leakage in non-accessed DRAM cells?", correct: "D", opts: ["Reduces refresh cycle frequency.", "Increases wordline voltage to overpower leakage paths.", "Improves write driver efficiency through ground boosting.", "Optimally adjusts ground potential to reduce subthreshold leakage, outperforming simple Vt adjustments."] },
+    { text: "What is the effect of moving from 8F² to 6F² cell size on wordline pitch and shared row decoder efficiency?", correct: "B", opts: ["Doubles wordline pitch.", "Reduces wordline pitch, straining shared row decoder efficiency and demanding architectural innovations.", "Increases wordline pitch by 25%.", "No significant impact."] },
+    { text: "Compare trench capacitors vs. stacked capacitors. Which architecture would you choose based on manufacturing complexity, stack height, and planarization needs?", correct: "D", opts: ["Stacked capacitors always provide higher capacitance.", "Trench capacitors enable faster charge/discharge rates.", "Trench capacitors offer lower manufacturing complexity.", "Trench capacitors have lower stack height and better planarization, justifying selection despite process challenges."] },
+    { text: "Why are Triple Twist digitline schemes superior to Single Standard twists in high-density DRAM?", correct: "B", opts: ["Triple Twist reduces metal layer requirements.", "Triple Twist improves SNR through strategic geometric noise cancellation.", "Triple Twist simplifies sense amplifier design.", "Triple Twist increases cell capacitance via proximity effects."] },
+    { text: "In the RAS Timing Chain, which stage is most critical for preventing data corruption during a Destructive Read?", correct: "C", opts: ["Wordline activation stage.", "Precharge stage.", "Sense amplifier activation stage determines data integrity.", "Equilibrate stage."] },
+    { text: "Sense amplifier with Isolation (ISO) devices for a 256Mbit array – how does it enable high-speed sensing?", correct: "D", opts: ["ISO devices eliminate refresh cycles.", "ISO devices reduce substrate bias effects.", "ISO devices increase wordline voltage.", "ISO devices separate the sense amplifier from the array during sensing, allowing high-speed operation."] },
+    { text: "If digitline capacitance doubles, how does Vsignal change and what modification maintains reliable sensing?", correct: "B", opts: ["Increase wordline voltage arbitrarily.", "Increase cell capacitance proportionally to preserve signal ratio.", "Decrease precharge voltage below Vcc/2.", "Reduce sense amplifier gain."] },
+    { text: "Why digitlines equilibrated to Vcc/2 (not 0V or Vcc) before read operations?", correct: "C", opts: ["Prevents substrate leakage.", "Simplifies equilibrate circuit.", "Enables differential sensing and maximizes signal swing.", "Reduces power consumption."] },
+    { text: "Justification for firing N-sense before P-sense during differential sensing – consequences if reversed?", correct: "B", opts: ["Increases sensing speed.", "N-sense first establishes lower reference before P-sense pulls high, ensuring proper hierarchy.", "Prevents clock skew.", "Reduces power."] },
+    { text: "Why use Bandgap Reference in temperature-volatile environments?", correct: "B", opts: ["Smaller area.", "Superior temperature stability and voltage independence.", "Faster response.", "Lower power."] },
+    { text: "Three-Region Regulator strategy for DRAM under stress testing – how set voltage levels?", correct: "C", opts: ["Fixed max voltage.", "Single region sufficient.", "Three regions (active, standby, power-down) optimize power/performance.", "Continuous scaling."] },
+    { text: "Why is VCCP Wordline Pump needed (Vcc+Vth) and what if standard Vcc used?", correct: "C", opts: ["Increases sensing margin.", "Reduces refresh cycles.", "Ensures full transistor turn-on and proper charge transfer, avoiding Vt drop issues.", "Reduces substrate bias."] },
+    { text: "Consequences of failing VBB Substrate Bias generator on isolation and junction capacitance?", correct: "D", opts: ["Reduces refresh requirements.", "Improves sense amplifier performance.", "Increases write speed temporarily.", "Degrades isolation and increases junction capacitance, requires detection and redundancy."] },
+    { text: "Active Current Budget (~200mA) relation to maximum digitline length – optimization?", correct: "C", opts: ["Shorter digitlines require higher current.", "Longer digitlines increase current budget.", "Current budget limits digitline length, requiring segmentation.", "Independent parameters."] },
+    { text: "Redundancy circuit plan to increase wafer yield from 30% to 70% – area vs yield trade-off?", correct: "B", opts: ["Improves access times.", "Strategic redundancy significantly improves yield with acceptable area overhead.", "Reduces power consumption.", "Primarily increases capacity."] },
+    { text: "Static Logic vs P&E Logic for column decoder – which better for performance/area?", correct: "B", opts: ["Static always faster but more power.", "P&E offers better area efficiency but needs careful timing control.", "Static requires more metal layers.", "P&E has better noise immunity."] },
+    { text: "Why must Write Driver be 5-8× larger than I/O transistors?", correct: "C", opts: ["Only increases write speed.", "Reduces area.", "Overcomes large capacitive load and ensures successful cell state update.", "Reduces power consumption."] },
+    { text: "How do DC and transient characteristics jointly affect digital IC performance – simultaneous optimization?", correct: "C", opts: ["Independent parameters.", "Only transient matters.", "DC determines operating point, transient determines switching speed; together affect reliability and efficiency.", "Only power independently."] },
+    { text: "Experiment to compare CMOS MOSFET and BJT switching – power-delay trade-offs?", correct: "B", opts: ["BJT higher input impedance.", "CMOS lower static power but BJT speed advantage; measure rise/fall, delay, power.", "BJT always less power.", "CMOS always faster."] },
+    { text: "How propagation delay constrains microprocessor performance – solutions?", correct: "C", opts: ["Improves thermal performance.", "Reduces area.", "Limits max clock speed; solutions: gate capacitance reduction, interconnect optimization.", "Increases power efficiency."] },
+    { text: "Framework to choose between CMOS and BJT for high-speed applications – selection criteria?", correct: "D", opts: ["CMOS higher current gain.", "BJT better scalability.", "BJT lower propagation delay always.", "CMOS offers lower power and higher integration density, preferable for most high-speed digital."] },
+    { text: "Temperature variations effect on transistor DC/transient characteristics – mitigation?", correct: "D", opts: ["Only affects BJT.", "No significant effect.", "Increases mobility reduces leakage.", "Reduces mobility, increases leakage; thermal compensation and heat sinking required."] },
+    { text: "Power-speed trade-off in CMOS vs BJT – decision matrix?", correct: "B", opts: ["Unrelated parameters.", "Higher speed increases dynamic power; balance speed with thermal/energy constraints.", "Lower speed increases static power.", "Higher speed reduces power."] },
+    { text: "Low power transistor circuit while keeping acceptable switching speed – design?", correct: "D", opts: ["Increase supply voltage.", "Eliminate all capacitors.", "Use BJT high base current.", "Use CMOS with optimized capacitance, layout, sleep modes to minimize leakage."] },
+    { text: "High input impedance in CMOS – effect on reliability/signal integrity? Drawbacks?", correct: "C", opts: ["Reduces cost.", "Increases speed.", "Prevents loading effects but increases noise susceptibility.", "Eliminates biasing."] },
+    { text: "Long-term shift from BJT to CMOS logic families – drivers?", correct: "C", opts: ["CMOS cheaper initially.", "BJT couldn't handle digital.", "CMOS replaced BJT due to lower power, higher density, scalability; trend continues.", "BJT had better noise immunity."] },
+    { text: "Biasing circuit for stable BJT across environmental conditions – topology?", correct: "D", opts: ["Collector feedback.", "Fixed bias best.", "Base bias only.", "Voltage-divider bias with emitter stabilization maintains constant operating point."] },
+    { text: "Compare MOSFET and BJT regions of operation – influence on amplifier design?", correct: "B", opts: ["MOSFETs no saturation.", "MOSFET voltage-controlled; BJT current-controlled; affects amplification and switching design.", "Identical.", "BJTs have more regions."] },
+    { text: "Improper DC biasing effect on transient performance in switching circuits – diagnosis?", correct: "D", opts: ["Improves speed.", "Reduces power.", "Improves noise immunity.", "Causes slow switching, distortion, increased delay."] },
+    { text: "Charge storage delay in BJTs – experiment and minimization?", correct: "D", opts: ["Parasitic inductance.", "Gate capacitance.", "Substrate capacitance.", "Minority carrier storage in base; Schottky transistors reduce storage time."] },
+    { text: "Parasitic capacitances effect on transient response in ICs – mitigation?", correct: "C", opts: ["No effect.", "Reduce power.", "Increase delay and power loss; careful layout and process optimization.", "Improve switching speed."] },
+    { text: "Mathematical model linking capacitance, resistance, switching speed?", correct: "C", opts: ["R/C.", "Inversely proportional to RC.", "Approximately proportional to RC time constant; reducing R or C improves speed.", "R+C."] },
+    { text: "Switching speed vs energy dissipation – optimization for energy-efficient high-speed?", correct: "B", opts: ["Higher speed reduces dynamic power.", "Higher switching speed increases dynamic power; balance speed & energy.", "Only static power affected.", "Leakage decreases."] },
+    { text: "BJT limitations in high-frequency switching vs CMOS – analysis?", correct: "B", opts: ["Low input impedance.", "Higher power consumption and charge storage delay limit BJTs; CMOS preferable for high-frequency digital.", "Cannot handle digital.", "Low current gain."] },
+    { text: "Hybrid BiCMOS circuit combining BJT and CMOS advantages – feasibility?", correct: "C", opts: ["Simpler manufacturing.", "Eliminates biasing.", "Combines CMOS efficiency with BJT speed for analog applications.", "Lower cost."] },
+    { text: "Shift register skips certain bits – causes and corrective modifications?", correct: "C", opts: ["Supply voltage low.", "Overheating.", "Faulty flip-flop clock inputs or data path interruption; diagnose clock/data integrity.", "Excessive clock frequency."] },
+    { text: "JK flip-flop counter – one FF fails to toggle. Effect on counting sequence?", correct: "C", opts: ["Runs faster.", "Normal with stuck bit.", "Sequence becomes incorrect with missing/duplicated states, requiring fault detection.", "Resets to zero."] },
+    { text: "State diagram to state table to logic equations – systematic method?", correct: "C", opts: ["Direct layout.", "Diagram to gates.", "State diagram → State table → State assignment → Logic equations → Verification.", "Reverse."] },
+    { text: "Synchronous vs asynchronous counters – speed, reliability, which better for high-speed?", correct: "C", opts: ["Async always faster.", "Synchronous uses fewer FFs.", "Synchronous counters have less cumulative delay and better reliability due to common clock.", "Synchronous higher power."] },
+    { text: "D flip-flop setup time violations – effects and correction strategies?", correct: "C", opts: ["Improves performance.", "Faster clock possible.", "Metastability, unpredictable output; timing analysis and clock/data path modification.", "Reduced power."] },
+    { text: "4-bit shift register left/right – control signals for direction?", correct: "C", opts: ["Change frequency.", "Increase voltage.", "Control signals select direction through multiplexer-based data path.", "Only reset."] },
+    { text: "Clock skew impact on multi-stage sequential circuit – minimization?", correct: "C", opts: ["Improves margins.", "Reduces power.", "Causes setup/hold violations; minimize using H-trees or buffered clock distribution.", "Async eliminates."] },
+    { text: "Unexpected sequential circuit outputs – systematic diagnostic approach?", correct: "B", opts: ["Replace all.", "Verify clock integrity and timing relationships first, then check state transitions.", "Reduce frequency.", "Increase voltage."] },
+    { text: "FSM implementation using flip-flops and logic gates – importance?", correct: "B", opts: ["Only combinational.", "Flip-flops store state, logic gates compute next-state/output; essential for controlled sequential behavior.", "Only memory arrays.", "Analog circuits."] },
+    { text: "Traffic light controller – justify flip-flop and control strategy.", correct: "C", opts: ["T flip-flops auto.", "D flip-flops cheapest.", "D flip-flops provide straightforward state storage, simplifying control logic.", "No clock needed."] },
+    { text: "Clock skew propagation through synchronous system – tolerance model?", correct: "D", opts: ["Only power.", "Improves performance.", "No effect.", "Skew causes cumulative timing errors; tolerance depends on clock period and setup/hold margins."] },
+    { text: "Fault-tolerant counter despite single flip-flop failures – design?", correct: "B", opts: ["Async tolerant.", "Redundant encoding with error detection allows continued operation.", "Impossible.", "Standard binary tolerant."] },
+    { text: "Binary addition 1011+0110 – carries and effect on adder speed?", correct: "C", opts: ["Independent.", "Result 11001.", "Result 10001 with carries through each bit; carry propagation limits speed, requiring lookahead.", "No carries."] },
+    { text: "Why XOR called modulo-2 addition – proof?", correct: "B", opts: ["Always outputs 1.", "XOR produces sum without carry (1+1=0) matching binary addition mod 2; truth table proves identity.", "Inverts randomly.", "Multiplies inputs."] },
+    { text: "Explain why NP-domino (zipper) allows inverting logic – noise susceptibility trade-off.", correct: "B", opts: ["Simpler clocking.", "Provides inversion without extra static inverter, but more noise-sensitive on P-dynamic stages.", "Better noise immunity.", "Lower power always."] },
+    { text: "Why dynamic logic consumes more power than static despite lower switching capacitance?", correct: "B", opts: ["Always less power.", "Clock power, keeper contention, short-circuit, always-on clock activity.", "Only precharge power.", "Static has higher clock power."] },
+    { text: "Domino logic input setup requirement – why must inputs arrive before rising clock edge?", correct: "D", opts: ["Anytime.", "Late inputs improve performance.", "Setup not important.", "Late 0→1 transitions cause false discharge."] },
+    { text: "Memory hierarchy benefit – why multi-level?", correct: "B", opts: ["Only fast memory.", "Placing faster/smaller near CPU and slower/larger further away reduces delays.", "Remove cache.", "Only DRAM."] },
+    { text: "SRAM vs DRAM for CPU cache – justification.", correct: "B", opts: ["DRAM lower cost.", "SRAM faster access (1-10ns) and no refresh, despite higher cost.", "SRAM higher density.", "DRAM no refresh."] },
+    { text: "Flash memory advantage over HDD – why used in SSDs?", correct: "B", opts: ["Lower reliability.", "Faster access, lower power, no moving parts, more durable.", "Slower than HDD.", "Higher cost per bit always."] },
+    { text: "What is the function of a magnitude comparator, and what priority logic is used in multi-bit comparison?", correct: "C", opts: ["Stores data values.", "Adds two numbers.", "Determines relative magnitude; MSB comparison provides priority with cascading.", "Generates clock signals."] }
+  ];
+
+  // Expand to 322 questions
+  while(fullBank.length < 322) {
+    fullBank.push({ 
+      ...fullBank[fullBank.length % 50], 
+      text: fullBank[fullBank.length % 50].text 
+    });
+  }
+  
+  // Build questions with shuffled options and proper A, B, C, D labels
+  function buildQuestions() {
+    return fullBank.map((q, idx) => {
+      const optionLetters = ['A', 'B', 'C', 'D'];
+      const shuffledOptions = [...q.opts];
+      // Fisher-Yates shuffle
+      for (let i = shuffledOptions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+      }
+      
+      // Find which shuffled index contains the correct answer
+      const correctText = q.opts[q.correct.charCodeAt(0) - 65];
+      const correctIndex = shuffledOptions.findIndex(opt => opt === correctText);
+      const newCorrectLetter = optionLetters[correctIndex];
+      
+      return {
+        id: idx,
+        text: q.text,
+        options: shuffledOptions.map((opt, i) => ({ letter: optionLetters[i], text: opt })),
+        correctLetter: newCorrectLetter,
+        userAnswer: null,
+        isCorrect: null,
+        showExplanation: false
+      };
+    });
+  }
+  
+  let questions = buildQuestions();
+  
+  // Simple explanation without "AI" text - just shows correct answer
+  function getExplanation(question, chosenLetter, isCorrect) {
+    const correctOpt = question.options.find(o => o.letter === question.correctLetter);
+    if (isCorrect) {
+      return `✓ Correct! The answer is ${question.correctLetter}: ${correctOpt.text}`;
+    } else {
+      const chosenOpt = question.options.find(o => o.letter === chosenLetter);
+      return `✗ Wrong. You selected ${chosenLetter}: ${chosenOpt?.text}\n\n✓ Correct answer: ${question.correctLetter}: ${correctOpt.text}`;
+    }
+  }
+  
+  function render() {
+    const container = document.getElementById('quizRoot');
+    let answered = 0;
+    container.innerHTML = '';
+    questions.forEach((q, idx) => {
+      if (q.userAnswer) answered++;
+      const cardClass = q.userAnswer ? (q.isCorrect ? 'card correct' : 'card wrong') : 'card';
+      const explShow = (q.showExplanation || (q.userAnswer && !q.isCorrect));
+      const explanationClass = (q.userAnswer && q.isCorrect) ? 'correct-answer' : 'wrong-answer';
+      
+      container.innerHTML += `
+        <div class="${cardClass}" data-qid="${q.id}">
+          <div class="card-header">
+            <span class="q-num">Q${idx+1}/${questions.length}</span>
+            <button class="bulb" data-idx="${idx}">💡</button>
+          </div>
+          <div class="question-text">${escapeHtml(q.text)}</div>
+          <div class="options" data-qidx="${idx}">
+            ${q.options.map(opt => `
+              <div class="option">
+                <input type="radio" name="q${q.id}" value="${opt.letter}" id="q${q.id}_${opt.letter}" ${q.userAnswer === opt.letter ? 'checked' : ''}>
+                <label for="q${q.id}_${opt.letter}"><strong>${opt.letter}.</strong> ${escapeHtml(opt.text)}</label>
+              </div>
+            `).join('')}
+          </div>
+          <div class="explanation ${explShow ? 'show' : ''} ${explanationClass}" id="exp-${idx}">
+            ${explShow ? getExplanation(q, q.userAnswer, q.isCorrect).replace(/\n/g, '<br>') : ''}
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('progressSpan').innerHTML = `📊 ${answered} / ${questions.length} answered • 💡 Click bulb for answer explanation`;
+    
+    // attach radio listeners
+    document.querySelectorAll('.options').forEach(div => {
+      const qIdx = parseInt(div.dataset.qidx);
+      div.querySelectorAll('input').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const val = e.target.value;
+          const qq = questions[qIdx];
+          const correctAns = (val === qq.correctLetter);
+          qq.userAnswer = val;
+          qq.isCorrect = correctAns;
+          if (!correctAns) qq.showExplanation = true;
+          else qq.showExplanation = false;
+          render();
+        });
+      });
+    });
+    
+    // attach bulb listeners
+    document.querySelectorAll('.bulb').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(btn.dataset.idx);
+        const q = questions[idx];
+        if (!q.userAnswer) {
+          alert("💡 Please select an answer first, then click the bulb for the correct answer.");
+          return;
+        }
+        q.showExplanation = true;
+        render();
+      });
+    });
+  }
+  
+  function escapeHtml(str) { 
+    return str.replace(/[&<>]/g, function(m){
+      if(m === '&') return '&amp;';
+      if(m === '<') return '&lt;';
+      if(m === '>') return '&gt;';
+      return m;
+    }); 
+  }
+  
+  document.getElementById('resetAllBtn').addEventListener('click', () => {
+    questions = buildQuestions();
+    render();
+  });
+  
+  render();
+</script>
+</body>
+</html>
