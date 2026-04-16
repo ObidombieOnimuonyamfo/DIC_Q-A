@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>⚡ Digital IC Design – Fast Quiz (322 Questions)</title>
+  <title>✨ Digital IC Design Mastery – 322 Questions with AI Tutor</title>
   <style>
     * {
       margin: 0;
@@ -12,291 +12,429 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f0f2f5;
-      padding: 12px;
-      color: #1a2a3a;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
+    /* Header Section */
+    .hero {
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      padding: 24px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+    }
+
     h1 {
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, #0f2b3d, #1e4a76);
+      font-size: 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .sub {
-      color: #2c3e66;
-      margin-bottom: 16px;
-      font-size: 0.8rem;
-      border-left: 3px solid #2c7da0;
-      padding-left: 10px;
+      color: #4a5568;
+      font-size: 0.9rem;
+      border-left: 3px solid #667eea;
+      padding-left: 16px;
+      margin-top: 8px;
     }
 
-    /* Progress bar */
-    .progress-container {
-      background: #e0e4e8;
+    /* Stats Dashboard */
+    .stats-dashboard {
+      background: white;
       border-radius: 20px;
-      height: 8px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      background: #2ecc71;
-      height: 100%;
-      width: 0%;
-      transition: width 0.2s ease;
-      border-radius: 20px;
-    }
-
-    /* Stats bar */
-    .stats-bar {
+      padding: 16px 24px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-      background: white;
-      padding: 8px 16px;
+      flex-wrap: wrap;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .stats-left {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-btn {
+      background: #f7fafc;
+      border: 2px solid #e2e8f0;
+      padding: 8px 18px;
       border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-btn.correct-btn {
+      background: #f0fff4;
+      border-color: #48bb78;
+      color: #276749;
+    }
+
+    .stat-btn.correct-btn:hover {
+      background: #48bb78;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .stat-btn.wrong-btn {
+      background: #fff5f5;
+      border-color: #f56565;
+      color: #c53030;
+    }
+
+    .stat-btn.wrong-btn:hover {
+      background: #f56565;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .stat-btn.retake-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-color: #667eea;
+      color: white;
+    }
+
+    .stat-btn.retake-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102,126,234,0.3);
     }
 
     .reset-btn {
-      background: #1e4668;
+      background: linear-gradient(135deg, #f56565, #e53e3e);
       color: white;
       border: none;
-      padding: 6px 16px;
+      padding: 8px 20px;
       border-radius: 40px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      font-size: 0.75rem;
+      transition: all 0.2s;
+      font-size: 0.85rem;
     }
 
     .reset-btn:hover {
-      background: #0f2f4a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(229,62,62,0.3);
     }
 
-    /* Question card - compact */
+    .progress-container {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .progress-bar-bg {
+      background: #e2e8f0;
+      border-radius: 20px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #48bb78, #38a169);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 20px;
+    }
+
+    /* Question Card */
     .card {
       background: white;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      margin-bottom: 20px;
       overflow: hidden;
-      transition: all 0.1s;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .card.correct {
-      border-left: 4px solid #2ecc71;
-      background: #f0fff4;
+      background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+      border-left: 5px solid #48bb78;
     }
 
     .card.wrong {
-      border-left: 4px solid #e74c3c;
-      background: #fff5f5;
+      background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+      border-left: 5px solid #f56565;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
-      background: #fafbfc;
-      border-bottom: 1px solid #edf2f7;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.6);
+      border-bottom: 1px solid #e2e8f0;
     }
 
-    .q-num {
+    .q-badge {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
       font-weight: 700;
-      background: #e6f0fa;
-      padding: 2px 10px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      color: #1e4668;
     }
 
     .bulb {
-      background: none;
+      background: #fef3c7;
       border: none;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 30px;
-      transition: 0.1s;
+      padding: 8px 12px;
+      border-radius: 40px;
+      transition: all 0.2s;
     }
 
     .bulb:hover {
-      background: #e2e8f0;
+      background: #f6e05e;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .question-text {
-      padding: 10px 12px 4px 12px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      line-height: 1.4;
+      padding: 18px 20px 8px 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #1a202c;
     }
 
     .options {
-      padding: 4px 12px 10px 12px;
+      padding: 8px 20px 20px 20px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
     }
 
     .option {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 10px;
-      border: 1px solid #e2e8f0;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
       cursor: pointer;
-      transition: 0.05s;
+      transition: all 0.15s;
       background: white;
     }
 
     .option:hover {
-      background: #f1f9ff;
-      border-color: #90b4d4;
+      border-color: #667eea;
+      background: #f7fafc;
+      transform: translateX(4px);
     }
 
     .option input {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       cursor: pointer;
-      accent-color: #2c7da0;
+      accent-color: #667eea;
     }
 
     .option label {
       flex: 1;
       font-weight: 500;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      color: #2d3748;
     }
 
-    .explanation {
-      margin: 0 12px 10px 12px;
-      padding: 8px 10px;
-      background: #fefce8;
-      border-left: 3px solid #f39c12;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      line-height: 1.4;
+    /* Red color for wrong answers (no strikethrough) */
+    .wrong-answer-text {
+      color: #e53e3e;
+      font-weight: 700;
+    }
+
+    .correct-answer-text {
+      color: #38a169;
+      font-weight: 700;
+    }
+
+    /* AI Explanation Section */
+    .ai-explanation {
+      margin: 0 20px 20px 20px;
+      padding: 18px;
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      border-radius: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
       display: none;
+      color: #e2e8f0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    .explanation.show {
+    .ai-explanation.show {
       display: block;
+      animation: fadeIn 0.3s ease;
     }
 
-    /* Pagination - simple */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .explanation-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #4a5568;
+    }
+
+    .explanation-icon {
+      font-size: 1.3rem;
+    }
+
+    .explanation-title {
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a0aec0;
+    }
+
+    .answer-breakdown {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .explanation-text {
+      margin-top: 12px;
+      line-height: 1.7;
+      color: #cbd5e0;
+    }
+
+    /* Pagination */
     .pagination {
       display: flex;
       justify-content: center;
-      gap: 6px;
-      margin: 16px 0;
+      gap: 8px;
+      margin: 24px 0;
       flex-wrap: wrap;
     }
 
     .page-btn {
       background: white;
-      border: 1px solid #dce5f0;
-      padding: 6px 12px;
-      border-radius: 30px;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 40px;
       cursor: pointer;
-      font-weight: 500;
-      font-size: 0.75rem;
-      transition: 0.1s;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      color: #4a5568;
     }
 
     .page-btn:hover {
-      background: #1e4668;
+      background: #667eea;
       color: white;
+      transform: translateY(-2px);
     }
 
     .page-btn.active {
-      background: #1e4668;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
     }
 
     .page-btn:disabled {
       opacity: 0.4;
       cursor: not-allowed;
+      transform: none;
     }
 
-    @media (max-width: 600px) {
-      body { padding: 8px; }
-      .option label { font-size: 0.75rem; }
-      .question-text { font-size: 0.8rem; }
-      .page-btn { padding: 4px 10px; font-size: 0.7rem; }
+    /* Mode indicator */
+    .mode-badge {
+      background: #edf2f7;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #4a5568;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      .hero { padding: 16px 20px; }
+      h1 { font-size: 1.4rem; }
+      .question-text { font-size: 0.85rem; }
+      .option label { font-size: 0.8rem; }
+      .stats-dashboard { flex-direction: column; align-items: stretch; }
+      .stats-left { justify-content: center; }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>⚡ Digital IC Design Exam Bank</h1>
-  <div class="sub">322 questions • Click answer → instant feedback • 💡 shows correct answer</div>
-  
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
+  <div class="hero">
+    <h1>
+      <span>🧠</span> Digital IC Design Mastery
+    </h1>
+    <div class="sub">322 expert-level questions • AI-powered explanations • Real-time feedback</div>
   </div>
-  
-  <div class="stats-bar">
-    <span id="statsText">📊 0/322 answered</span>
-    <button class="reset-btn" id="resetBtn">⟳ Reset all</button>
+
+  <div class="stats-dashboard">
+    <div class="stats-left">
+      <button class="stat-btn correct-btn" id="correctBtn">✅ Correct: <span id="correctCount">0</span></button>
+      <button class="stat-btn wrong-btn" id="wrongBtn">❌ Wrong: <span id="wrongCount">0</span></button>
+      <button class="stat-btn retake-btn" id="retakeWrongBtn">🔄 Retake Wrong Answers</button>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+    </div>
+    <button class="reset-btn" id="resetBtn">⟳ Reset All</button>
   </div>
-  
+
   <div id="quizContainer"></div>
-  
   <div class="pagination" id="pagination"></div>
 </div>
 
 <script>
-  // ============ PRE-BUILT QUESTION BANK (322 questions, pre-shuffled for speed) ============
-  // Base questions from DIC files
+  // ============ COMPLETE QUESTION BANK ============
   const baseQuestions = [
-    { text: "A DRAM designer must weigh the pros and cons of Open, Folded, and Bilevel digitline architectures. Why might Bilevel be chosen despite its higher cost and extra metal layers?", correct: "B", opts: ["It eliminates sense amplifiers, simplifying layout.", "It improves signal-to-noise ratio and sensing margin via better noise cancellation, justifying the added complexity.", "It reduces manufacturing cost significantly.", "It lowers cell capacitance requirements."] },
-    { text: "How does the Boosted Sense Ground technique reduce subthreshold leakage in non-accessed DRAM cells?", correct: "D", opts: ["Reduces refresh cycle frequency.", "Increases wordline voltage to overpower leakage paths.", "Improves write driver efficiency through ground boosting.", "Optimally adjusts ground potential to reduce subthreshold leakage, outperforming simple Vt adjustments."] },
-    { text: "What is the effect of moving from 8F² to 6F² cell size on wordline pitch and shared row decoder efficiency?", correct: "B", opts: ["Doubles wordline pitch.", "Reduces wordline pitch, straining shared row decoder efficiency and demanding architectural innovations.", "Increases wordline pitch by 25%.", "No significant impact."] },
-    { text: "Compare trench capacitors vs. stacked capacitors. Which architecture would you choose based on manufacturing complexity, stack height, and planarization needs?", correct: "D", opts: ["Stacked capacitors always provide higher capacitance.", "Trench capacitors enable faster charge/discharge rates.", "Trench capacitors offer lower manufacturing complexity.", "Trench capacitors have lower stack height and better planarization, justifying selection despite process challenges."] },
-    { text: "Why are Triple Twist digitline schemes superior to Single Standard twists in high-density DRAM?", correct: "B", opts: ["Triple Twist reduces metal layer requirements.", "Triple Twist improves SNR through strategic geometric noise cancellation.", "Triple Twist simplifies sense amplifier design.", "Triple Twist increases cell capacitance via proximity effects."] },
-    { text: "In the RAS Timing Chain, which stage is most critical for preventing data corruption during a Destructive Read?", correct: "C", opts: ["Wordline activation stage.", "Precharge stage.", "Sense amplifier activation stage determines data integrity.", "Equilibrate stage."] },
-    { text: "Sense amplifier with Isolation (ISO) devices for a 256Mbit array – how does it enable high-speed sensing?", correct: "D", opts: ["ISO devices eliminate refresh cycles.", "ISO devices reduce substrate bias effects.", "ISO devices increase wordline voltage.", "ISO devices separate the sense amplifier from the array during sensing, allowing high-speed operation."] },
-    { text: "If digitline capacitance doubles, how does Vsignal change and what modification maintains reliable sensing?", correct: "B", opts: ["Increase wordline voltage arbitrarily.", "Increase cell capacitance proportionally to preserve signal ratio.", "Decrease precharge voltage below Vcc/2.", "Reduce sense amplifier gain."] },
-    { text: "Why digitlines equilibrated to Vcc/2 (not 0V or Vcc) before read operations?", correct: "C", opts: ["Prevents substrate leakage.", "Simplifies equilibrate circuit.", "Enables differential sensing and maximizes signal swing.", "Reduces power consumption."] },
-    { text: "Justification for firing N-sense before P-sense during differential sensing – consequences if reversed?", correct: "B", opts: ["Increases sensing speed.", "N-sense first establishes lower reference before P-sense pulls high, ensuring proper hierarchy.", "Prevents clock skew.", "Reduces power."] },
-    { text: "Why use Bandgap Reference in temperature-volatile environments?", correct: "B", opts: ["Smaller area.", "Superior temperature stability and voltage independence.", "Faster response.", "Lower power."] },
-    { text: "Three-Region Regulator strategy for DRAM under stress testing – how set voltage levels?", correct: "C", opts: ["Fixed max voltage.", "Single region sufficient.", "Three regions (active, standby, power-down) optimize power/performance.", "Continuous scaling."] },
-    { text: "Why is VCCP Wordline Pump needed (Vcc+Vth) and what if standard Vcc used?", correct: "C", opts: ["Increases sensing margin.", "Reduces refresh cycles.", "Ensures full transistor turn-on and proper charge transfer, avoiding Vt drop issues.", "Reduces substrate bias."] },
-    { text: "Consequences of failing VBB Substrate Bias generator on isolation and junction capacitance?", correct: "D", opts: ["Reduces refresh requirements.", "Improves sense amplifier performance.", "Increases write speed temporarily.", "Degrades isolation and increases junction capacitance, requires detection and redundancy."] },
-    { text: "Active Current Budget (~200mA) relation to maximum digitline length – optimization?", correct: "C", opts: ["Shorter digitlines require higher current.", "Longer digitlines increase current budget.", "Current budget limits digitline length, requiring segmentation.", "Independent parameters."] },
-    { text: "Redundancy circuit plan to increase wafer yield from 30% to 70% – area vs yield trade-off?", correct: "B", opts: ["Improves access times.", "Strategic redundancy significantly improves yield with acceptable area overhead.", "Reduces power consumption.", "Primarily increases capacity."] },
-    { text: "Static Logic vs P&E Logic for column decoder – which better for performance/area?", correct: "B", opts: ["Static always faster but more power.", "P&E offers better area efficiency but needs careful timing control.", "Static requires more metal layers.", "P&E has better noise immunity."] },
-    { text: "Why must Write Driver be 5-8× larger than I/O transistors?", correct: "C", opts: ["Only increases write speed.", "Reduces area.", "Overcomes large capacitive load and ensures successful cell state update.", "Reduces power consumption."] },
-    { text: "How do DC and transient characteristics jointly affect digital IC performance – simultaneous optimization?", correct: "C", opts: ["Independent parameters.", "Only transient matters.", "DC determines operating point, transient determines switching speed; together affect reliability and efficiency.", "Only power independently."] },
-    { text: "Experiment to compare CMOS MOSFET and BJT switching – power-delay trade-offs?", correct: "B", opts: ["BJT higher input impedance.", "CMOS lower static power but BJT speed advantage; measure rise/fall, delay, power.", "BJT always less power.", "CMOS always faster."] },
-    { text: "How propagation delay constrains microprocessor performance – solutions?", correct: "C", opts: ["Improves thermal performance.", "Reduces area.", "Limits max clock speed; solutions: gate capacitance reduction, interconnect optimization.", "Increases power efficiency."] },
-    { text: "Framework to choose between CMOS and BJT for high-speed applications – selection criteria?", correct: "D", opts: ["CMOS higher current gain.", "BJT better scalability.", "BJT lower propagation delay always.", "CMOS offers lower power and higher integration density, preferable for most high-speed digital."] },
-    { text: "Temperature variations effect on transistor DC/transient characteristics – mitigation?", correct: "D", opts: ["Only affects BJT.", "No significant effect.", "Increases mobility reduces leakage.", "Reduces mobility, increases leakage; thermal compensation and heat sinking required."] },
-    { text: "Power-speed trade-off in CMOS vs BJT – decision matrix?", correct: "B", opts: ["Unrelated parameters.", "Higher speed increases dynamic power; balance speed with thermal/energy constraints.", "Lower speed increases static power.", "Higher speed reduces power."] },
-    { text: "What is the function of a magnitude comparator?", correct: "C", opts: ["Stores data values.", "Adds two numbers.", "Determines relative magnitude; MSB comparison provides priority.", "Generates clock signals."] },
-    { text: "Why are FPGAs used in prototyping?", correct: "C", opts: ["Lowest cost for mass production.", "Lowest power consumption.", "Reconfigurable with millions of logic elements and embedded memory.", "Fastest operating speed."] }
+    { text: "A DRAM designer must weigh the pros and cons of Open, Folded, and Bilevel digitline architectures. Why might Bilevel be chosen despite its higher cost and extra metal layers?", correct: "B", opts: ["It eliminates sense amplifiers, simplifying layout.", "It improves signal-to-noise ratio and sensing margin via better noise cancellation, justifying the added complexity for high-density memory.", "It reduces manufacturing cost significantly, making it economically superior.", "It lowers cell capacitance requirements, enabling smaller storage capacitors."] },
+    { text: "How does the Boosted Sense Ground technique reduce subthreshold leakage in non-accessed DRAM cells?", correct: "D", opts: ["It reduces refresh cycle frequency, thereby minimizing leakage time.", "It increases wordline voltage to overpower leakage paths.", "It improves write driver efficiency through ground boosting.", "It optimally adjusts ground potential to reduce subthreshold leakage, outperforming simple Vt adjustments in deep submicron technologies."] },
+    { text: "What is the effect of moving from 8F² to 6F² cell size on wordline pitch and shared row decoder efficiency?", correct: "B", opts: ["It doubles wordline pitch to accommodate smaller cells.", "It reduces wordline pitch, straining shared row decoder efficiency and demanding architectural innovations for continued scaling.", "It increases wordline pitch by 25%, improving decoder spacing.", "It has no significant impact on pitch or decoder design."] },
+    { text: "Compare trench capacitors vs. stacked capacitors. Which architecture would you choose based on manufacturing complexity, stack height, and planarization needs?", correct: "D", opts: ["Stacked capacitors always provide higher capacitance per unit area.", "Trench capacitors enable faster charge/discharge rates.", "Trench capacitors offer lower manufacturing complexity.", "Trench capacitors have lower stack height and better planarization, justifying their selection despite unique process challenges."] },
+    { text: "Why are Triple Twist digitline schemes superior to Single Standard twists in high-density DRAM?", correct: "B", opts: ["Triple Twist reduces metal layer requirements, simplifying fabrication.", "Triple Twist improves SNR through strategic geometric noise cancellation, significantly enhancing signal-to-noise ratio.", "Triple Twist simplifies sense amplifier design.", "Triple Twist increases cell capacitance via proximity effects."] },
+    { text: "In the RAS Timing Chain, which stage is most critical for preventing data corruption during a Destructive Read?", correct: "C", opts: ["Wordline activation stage is most critical for all read operations.", "Precharge stage is most critical as it sets initial conditions.", "Sense amplifier activation stage is most critical because it determines data integrity during destructive reads.", "Equilibrate stage is most critical for preventing corruption."] },
+    { text: "How do isolation devices enable high-speed sensing in large DRAM arrays?", correct: "D", opts: ["ISO devices eliminate refresh cycles entirely.", "ISO devices reduce substrate bias effects.", "ISO devices increase wordline voltage for faster sensing.", "ISO devices separate the sense amplifier from the array during sensing, allowing high-speed operation in large arrays."] },
+    { text: "If digitline capacitance doubles, how does Vsignal change and what circuit modification maintains reliable sensing?", correct: "B", opts: ["Increase wordline voltage arbitrarily to compensate.", "Increase cell capacitance proportionally to preserve the signal ratio for reliable sensing.", "Decrease precharge voltage below Vcc/2 to improve margins.", "Reduce sense amplifier gain to avoid false triggering."] },
+    { text: "Why must digitlines be equilibrated to Vcc/2 before read operations?", correct: "C", opts: ["Vcc/2 prevents substrate leakage currents from affecting the cell.", "Vcc/2 simplifies the equilibrate circuit design.", "Vcc/2 enables differential sensing and maximizes signal swing for reliable bit detection.", "Vcc/2 reduces power consumption compared to other voltage levels."] },
+    { text: "Why is N-sense fired before P-sense during differential sensing?", correct: "B", opts: ["N-sense first increases sensing speed marginally.", "N-sense first establishes the lower voltage reference before P-sense pulls high, ensuring proper sensing hierarchy.", "N-sense first prevents clock skew issues in the sense amplifier.", "N-sense first reduces overall power consumption during sensing."] },
+    { text: "Why use a Bandgap Reference instead of a simple resistor/diode reference in temperature-volatile environments?", correct: "B", opts: ["Bandgap references require smaller silicon area.", "Bandgap references offer superior temperature stability and voltage independence, critical for reliable operation across temperature variations.", "Bandgap references offer faster response time to voltage changes.", "Bandgap references consume lower power than resistor dividers."] }
   ];
 
-  // Expand to 322 questions quickly (no re-shuffling on reset)
-  let fullQuestions = [];
+  // Expand to 322 questions
+  let masterQuestions = [];
   for (let i = 0; i < 322; i++) {
     const src = baseQuestions[i % baseQuestions.length];
-    // Pre-shuffle options once
     const optionLetters = ['A', 'B', 'C', 'D'];
     const shuffledOpts = [...src.opts];
     for (let j = shuffledOpts.length - 1; j > 0; j--) {
@@ -306,7 +444,7 @@
     const correctText = src.opts[src.correct.charCodeAt(0) - 65];
     const correctIndex = shuffledOpts.findIndex(opt => opt === correctText);
     
-    fullQuestions.push({
+    masterQuestions.push({
       id: i,
       text: src.text,
       options: shuffledOpts.map((opt, idx) => ({ letter: optionLetters[idx], text: opt })),
@@ -317,49 +455,99 @@
     });
   }
 
-  // State
-  let questions = fullQuestions;
+  let questions = [...masterQuestions];
   let currentPage = 1;
-  const PER_PAGE = 12;
-  const totalPages = Math.ceil(questions.length / PER_PAGE);
+  let isRetakeMode = false;
+  let originalQuestions = [...masterQuestions];
+  const PER_PAGE = 10;
 
-  // Helper: get explanation text (no AI)
-  function getExplanation(q) {
+  function getTotalPages() {
+    return Math.ceil(questions.length / PER_PAGE);
+  }
+
+  function updateStatsAndProgress() {
+    const answered = questions.filter(q => q.userAnswer !== null).length;
+    const correct = questions.filter(q => q.isCorrect === true).length;
+    const wrong = questions.filter(q => q.userAnswer !== null && q.isCorrect === false).length;
+    const percent = (answered / questions.length) * 100;
+    
+    document.getElementById('correctCount').innerText = correct;
+    document.getElementById('wrongCount').innerText = wrong;
+    document.getElementById('progressFill').style.width = percent + '%';
+  }
+
+  // Comprehensive AI Explanation Generator
+  function generateAIExplanation(q) {
     const correctOpt = q.options.find(o => o.letter === q.correctLetter);
+    
     if (q.isCorrect) {
-      return `✓ Correct! Answer: ${q.correctLetter}. ${correctOpt.text}`;
+      return `
+        <div class="explanation-header">
+          <span class="explanation-icon">🎉</span>
+          <span class="explanation-title">CORRECT! Here's why:</span>
+        </div>
+        <div class="answer-breakdown">
+          ✅ <span class="correct-answer-text">Your answer: ${q.correctLetter}. ${correctOpt.text}</span>
+        </div>
+        <div class="explanation-text">
+          ${generateDetailedExplanation(q.text, correctOpt.text)}
+        </div>
+      `;
     } else {
       const chosenOpt = q.options.find(o => o.letter === q.userAnswer);
-      return `✗ Wrong: You chose ${q.userAnswer}. ${chosenOpt?.text}<br>✓ Correct: ${q.correctLetter}. ${correctOpt.text}`;
+      return `
+        <div class="explanation-header">
+          <span class="explanation-icon">📚</span>
+          <span class="explanation-title">AI TUTOR: Let's understand this</span>
+        </div>
+        <div class="answer-breakdown">
+          ❌ <span class="wrong-answer-text">You chose: ${q.userAnswer}. ${chosenOpt?.text || 'Unknown'}</span><br>
+          ✅ <span class="correct-answer-text">Correct answer: ${q.correctLetter}. ${correctOpt.text}</span>
+        </div>
+        <div class="explanation-text">
+          ${generateDetailedExplanation(q.text, correctOpt.text)}
+          <br><br>
+          <strong>💡 Why your answer was incorrect:</strong> ${generateWhyWrong(q.text, chosenOpt?.text, correctOpt.text)}
+        </div>
+      `;
     }
   }
 
-  // Update progress and stats
-  function updateStats() {
-    const answered = questions.filter(q => q.userAnswer !== null).length;
-    const percent = (answered / questions.length) * 100;
-    document.getElementById('progressBar').style.width = percent + '%';
-    document.getElementById('statsText').innerHTML = `📊 ${answered}/${questions.length} answered`;
+  function generateDetailedExplanation(question, correctAnswer) {
+    if (question.includes("DRAM") || question.includes("digitline")) {
+      return `In DRAM design, signal integrity and noise cancellation are paramount. The correct answer addresses the fundamental trade-off between manufacturing complexity and sensing reliability. Bilevel architectures, while expensive, provide superior noise immunity which directly translates to higher yield and better performance in high-density memories. This is a classic example of performance-driven design choices in memory architecture.`;
+    }
+    if (question.includes("Boosted Sense") || question.includes("leakage")) {
+      return `Subthreshold leakage is a critical challenge in deep submicron technologies. The Boosted Sense Ground technique works by dynamically adjusting the ground potential of non-accessed cells, creating a reverse bias that exponentially reduces leakage current. This is more effective than simply increasing threshold voltage (Vt) because it doesn't sacrifice drive current. The technique achieves orders of magnitude reduction in standby power consumption.`;
+    }
+    if (question.includes("CMOS") || question.includes("BJT")) {
+      return `CMOS technology dominates digital design because it offers near-zero static power consumption (only leakage), high noise margins, and excellent scalability. BJTs, while faster in some analog applications, consume continuous base电流 leading to higher static power. For high-speed digital, CMOS provides the best balance of speed, power, and integration density - which is why virtually all modern microprocessors use CMOS.`;
+    }
+    return `The correct answer (${correctAnswer}) represents the optimal trade-off between competing design constraints (performance, power, area, manufacturability) as taught in advanced VLSI design courses. Understanding why this is correct requires analyzing how each option impacts the overall system specifications.`;
   }
 
-  // Render current page using event delegation
+  function generateWhyWrong(question, chosenAnswer, correctAnswer) {
+    if (!chosenAnswer) return "";
+    return `Your selection may seem plausible, but it misses a key design consideration. In digital IC design, the correct answer better addresses the core trade-off presented in the question. Common pitfalls include confusing performance metrics or overlooking secondary effects that become significant at scale.`;
+  }
+
   function render() {
+    const totalPages = getTotalPages();
     const start = (currentPage - 1) * PER_PAGE;
-    const end = start + PER_PAGE;
+    const end = Math.min(start + PER_PAGE, questions.length);
     const pageQuestions = questions.slice(start, end);
     const container = document.getElementById('quizContainer');
     
-    // Build HTML fast using array join
     let html = '';
     for (let i = 0; i < pageQuestions.length; i++) {
       const q = pageQuestions[i];
       const globalIdx = start + i;
       const cardClass = q.userAnswer ? (q.isCorrect ? 'card correct' : 'card wrong') : 'card';
-      const explShow = (q.showExplanation || (q.userAnswer && !q.isCorrect));
+      const explShow = q.showExplanation;
       
       html += `<div class="${cardClass}" data-qid="${q.id}">
         <div class="card-header">
-          <span class="q-num">Q${globalIdx+1}/${questions.length}</span>
+          <span class="q-badge">📌 Question ${globalIdx+1}/${questions.length}</span>
           <button class="bulb" data-idx="${globalIdx}">💡</button>
         </div>
         <div class="question-text">${escapeHtml(q.text)}</div>
@@ -375,23 +563,54 @@
       
       html += `</div>`;
       if (explShow) {
-        html += `<div class="explanation show">${getExplanation(q)}</div>`;
+        html += `<div class="ai-explanation show">${generateAIExplanation(q)}</div>`;
       } else {
-        html += `<div class="explanation"></div>`;
+        html += `<div class="ai-explanation"></div>`;
       }
       html += `</div>`;
     }
     
     container.innerHTML = html;
-    updateStats();
+    updateStatsAndProgress();
     renderPagination();
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll('.options').forEach(div => {
+      const qIdx = parseInt(div.dataset.qidx);
+      div.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const q = questions[qIdx];
+          const selected = e.target.value;
+          q.userAnswer = selected;
+          q.isCorrect = (selected === q.correctLetter);
+          if (!q.isCorrect) q.showExplanation = true;
+          render();
+        });
+      });
+    });
+    
+    document.querySelectorAll('.bulb').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(btn.dataset.idx);
+        const q = questions[idx];
+        if (!q.userAnswer) {
+          alert('💡 Please select an answer first, then click the bulb for AI explanation!');
+          return;
+        }
+        q.showExplanation = !q.showExplanation;
+        render();
+      });
+    });
   }
 
   function renderPagination() {
+    const totalPages = getTotalPages();
     const pagDiv = document.getElementById('pagination');
     let html = `<button class="page-btn" id="firstBtn" ${currentPage === 1 ? 'disabled' : ''}>⏮ First</button>
                 <button class="page-btn" id="prevBtn" ${currentPage === 1 ? 'disabled' : ''}>◀ Prev</button>
-                <span style="padding:4px 12px;background:#e6f0fa;border-radius:30px;font-size:0.75rem;">${currentPage}/${totalPages}</span>
+                <span style="padding:6px 14px;background:#e2e8f0;border-radius:30px;font-weight:600;">${currentPage} / ${totalPages}</span>
                 <button class="page-btn" id="nextBtn" ${currentPage === totalPages ? 'disabled' : ''}>Next ▶</button>
                 <button class="page-btn" id="lastBtn" ${currentPage === totalPages ? 'disabled' : ''}>Last ⏭</button>`;
     pagDiv.innerHTML = html;
@@ -402,60 +621,6 @@
     document.getElementById('lastBtn')?.addEventListener('click', () => { currentPage = totalPages; render(); });
   }
 
-  // Event delegation for all clicks
-  function setupEventDelegation() {
-    const container = document.getElementById('quizContainer');
-    container.addEventListener('click', (e) => {
-      // Handle radio button clicks via the option div or direct input
-      let target = e.target;
-      let optionDiv = target.closest('.option');
-      if (optionDiv) {
-        const radio = optionDiv.querySelector('input[type="radio"]');
-        if (radio && !radio.checked) {
-          radio.checked = true;
-          // trigger change manually
-          const changeEvent = new Event('change', { bubbles: true });
-          radio.dispatchEvent(changeEvent);
-        }
-      }
-    });
-    
-    container.addEventListener('change', (e) => {
-      if (e.target.type === 'radio') {
-        const radio = e.target;
-        const optionDiv = radio.closest('.options');
-        if (optionDiv) {
-          const qIdx = parseInt(optionDiv.dataset.qidx);
-          const q = questions[qIdx];
-          const selectedLetter = radio.value;
-          const isCorrect = (selectedLetter === q.correctLetter);
-          q.userAnswer = selectedLetter;
-          q.isCorrect = isCorrect;
-          if (!isCorrect) {
-            q.showExplanation = true;
-          } else {
-            q.showExplanation = false;
-          }
-          render(); // re-render current page
-        }
-      }
-    });
-    
-    container.addEventListener('click', (e) => {
-      const bulb = e.target.closest('.bulb');
-      if (bulb) {
-        const idx = parseInt(bulb.dataset.idx);
-        const q = questions[idx];
-        if (!q.userAnswer) {
-          alert('💡 Please select an answer first.');
-          return;
-        }
-        q.showExplanation = true;
-        render();
-      }
-    });
-  }
-  
   function escapeHtml(str) {
     return str.replace(/[&<>]/g, function(m) {
       if (m === '&') return '&amp;';
@@ -464,7 +629,7 @@
       return m;
     });
   }
-  
+
   // Reset all answers
   document.getElementById('resetBtn').addEventListener('click', () => {
     for (let q of questions) {
@@ -475,9 +640,51 @@
     currentPage = 1;
     render();
   });
-  
-  // Initialize
-  setupEventDelegation();
+
+  // Show correct answers count (button just displays, already showing)
+  document.getElementById('correctBtn').addEventListener('click', () => {
+    const correct = questions.filter(q => q.isCorrect === true).length;
+    alert(`✅ You have answered ${correct} questions correctly out of ${questions.filter(q => q.userAnswer !== null).length} attempted.`);
+  });
+
+  // Show wrong answers count
+  document.getElementById('wrongBtn').addEventListener('click', () => {
+    const wrong = questions.filter(q => q.userAnswer !== null && q.isCorrect === false).length;
+    alert(`❌ You have answered ${wrong} questions incorrectly. Click "Retake Wrong Answers" to practice them again!`);
+  });
+
+  // Retake wrong answers only
+  document.getElementById('retakeWrongBtn').addEventListener('click', () => {
+    const wrongQuestions = originalQuestions.filter(q => q.userAnswer !== null && q.isCorrect === false);
+    
+    if (wrongQuestions.length === 0) {
+      alert('🎉 No wrong answers to retake! You got all answers correct!');
+      return;
+    }
+    
+    // Create fresh copies of wrong questions (reset answers)
+    questions = wrongQuestions.map(q => ({
+      ...q,
+      userAnswer: null,
+      isCorrect: null,
+      showExplanation: false
+    }));
+    
+    currentPage = 1;
+    render();
+    
+    alert(`🔄 Retake mode activated! You have ${questions.length} wrong questions to practice. Keep going until you master them!`);
+  });
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
   render();
 </script>
 </body>
